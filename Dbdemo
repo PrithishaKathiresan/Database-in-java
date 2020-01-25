@@ -1,0 +1,21 @@
+import java.sql.*;
+class Dbdemo{
+public static void main(String[] args){
+try{
+Class.forName("oracle.jdbc.driver.OracleDriver");
+Connection con=DriverManager.getConnection
+
+("jdbc:oracle:thin:@172.16.38.200:1521:edu","scott","tiger");
+Statement st =con.createStatement();
+ResultSet res=st.executeQuery("select*from tbl_it24");
+  while(res.next()){
+  System.out.println(res.getInt("rno") + "   "+res.getString("name"));
+}
+ con.close();
+}                           
+catch(Exception exc){
+System.out.println("class not found"+exc);
+
+}
+}
+}
